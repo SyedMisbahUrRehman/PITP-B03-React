@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Card from './Card';
+import MyButton from './MyButton';
 
 function App() {
 
@@ -11,15 +12,23 @@ function App() {
     { title: 'Golden Sunsets', subtitle: 'A Painter’s Dream', description: 'The sky painted in hues of orange and pink as the sun sets, casting a magical glow over the horizon.' },
     { title: 'Blooming Wildflowers', subtitle: 'Nature’s Color Palette', description: 'Fields of wildflowers in full bloom, splashing vibrant colors across the meadows.' }
   ];
-
+  const showHello = () => {
+    alert('Hello!')
+  }
+  const showBye = () => {
+    alert('Bye!')
+  }
 
   return (
-    <>
-    {data.map((ele,i)=>(
+    <div>
+    {/* {data.map((ele,i)=>(
 
       <Card data={ele} key={i}/>
-    ))}
-    </>
+    ))} */}
+    <MyButton label={"Hello"} fn={showHello}/>
+    <MyButton label={"Bye"} fn={showBye}/>
+    <MyButton />
+    </div>
   )
 }
 
