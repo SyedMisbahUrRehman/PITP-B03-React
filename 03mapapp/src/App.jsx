@@ -25,9 +25,11 @@ function App() {
 
       <Card data={ele} key={i}/>
     ))} */}
-    <MyButton label={"Hello"} fn={showHello}/>
-    <MyButton label={"Bye"} fn={showBye}/>
-    <MyButton />
+    {/* <MyButton label={"Hello"} fn={showHello}/>
+    <MyButton label={"Bye"} fn={showBye}/> */}
+    <MyButton>
+      Show this label
+    </MyButton>
     </div>
   )
 }

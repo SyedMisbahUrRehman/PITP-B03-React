@@ -1,8 +1,6 @@
-export default function MyButton({label = "Click Me",fn}) {
-    const showAlert = () => {
-        alert('Button Clicked!')
-    }
+export default function MyButton({children}) {
+
     return (
-        <button onClick={fn}>{label}</button>
+        <button >{children}</button>
     )
 }
