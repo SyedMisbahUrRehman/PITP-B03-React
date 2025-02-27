@@ -1,36 +1,42 @@
-import { useEffect, useState } from 'react'
-
-import './App.css'
+import React, { useState, useEffect } from 'react';
 
 function App() {
-  const [fact, setFact] = useState('')
-  const [image, setImage] = useState(null)
-  const getCatFact = async()=>{
-    const response = await fetch("https://catfact.ninja/fact")
-    const data = await response.json()
-    setFact(data?.fact)
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  }
-  const getCatImage = async()=>{
-    const response = await fetch("https://api.thecatapi.com/v1/images/search?limit=1")
-    const data = await response.json()
-    setImage(data[0].url)
-    // console.log(data[0].url);
+    fetchData();
+  }, []);
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
-  }
-  useEffect(()=>{
-    getCatFact()
-    getCatImage()
-  },[])
-  console.log(image);
   return (
-    <>
-    <img src={image} alt="catoo" height={"50%"}/>
-    <p>{fact}</p>
-    </>
-  )
+    <div>
+      <h1>Posts</h1>
+      <ul>
+        {data.map((post) => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default App
+export default App;
