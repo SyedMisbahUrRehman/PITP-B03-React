@@ -35,6 +35,7 @@ function App() {
           <li key={post.id}>{post.title}</li>
         ))}
       </ul>
+      <iframe src="https://syedmisbah.notion.site/ebd/1a75d037b7c280fe9779e5a86ee3f71e" width="100%" height="600" frameborder="0" allowfullscreen />
     </div>
   );
 }
