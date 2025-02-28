@@ -42,15 +42,33 @@ import { useRef, useEffect ,useState} from "react";
 
 
 
-export default function InputFocus() {
+// export default function InputFocus() {
+//   const inputRef = useRef(null);
+
+//   useEffect(() => {
+//     console.log(inputRef.current);
+//     inputRef.current.focus();
+//   }, []);
+
+//   return <input ref={inputRef} placeholder="Type here..." />;
+// }
+
+
+
+
+export default function AutoSelectInput() {
   const inputRef = useRef(null);
 
-  useEffect(() => {
-    console.log(inputRef.current);
-    inputRef.current.focus();
-  }, []);
+  const handleSelect = () => {
+    inputRef.current.select();
+  };
 
-  return <input ref={inputRef} placeholder="Type here..." />;
+  return (
+    <div>
+      <input ref={inputRef} defaultValue="Click to select this text" />
+      <button onClick={handleSelect}>Select Text</button>
+    </div>
+  );
 }
 
 
