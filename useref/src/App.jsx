@@ -40,6 +40,23 @@ import { useRef, useEffect ,useState} from "react";
 //   );
 // }
 
+
+
+export default function InputFocus() {
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    console.log(inputRef.current);
+    inputRef.current.focus();
+  }, []);
+
+  return <input ref={inputRef} placeholder="Type here..." />;
+}
+
+
+
+
+
 // Here’s a simple summary:  
 
 // - `useRef` gives you an object with a `.current` property that you can change.  
